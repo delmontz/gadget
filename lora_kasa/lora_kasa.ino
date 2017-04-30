@@ -38,7 +38,7 @@ void start()
     LoRa.setDr(3);
 
     /*  WDTのインターバル設定 1, 2, 4 or 8 秒のいずれか  */
-    setWDT(1);    
+    //setWDT(1);    
 }
 
 //================================
@@ -46,7 +46,10 @@ void start()
 //================================
 void task1(void)
 {
+ while(true){
    sendTemp();            // 　LoRaWAN送信処理
+   delay(5000);
+ }
 }
 
 /*-------------------------------------------------------------*/
@@ -61,7 +64,7 @@ void task2(void)
 //    TASK( function, interval by second )
 //===============================
 TASK_LIST = {
-        TASK(task1, 0, 20),
+        TASK(task1, 0, 1),
         //TASK(task2, 2, 10),
         END_OF_TASK_LIST
 };
@@ -77,9 +80,9 @@ void sendTemp()
 {
   short port = 100;    // port 12 = Temp
 
-  unsigned long temp    = 100;
-  unsigned long humi    = 100;
-  unsigned long press   = 100;
+  unsigned long temp    = random(139000000);
+  unsigned long humi    = random(340000000);
+  unsigned long press   = 0x00000003;
 
   // LoRaWANでデータを送信する
   //LoRa.sendString(port, true, F("%04x%04x%06lx"), temp, humi, press);
