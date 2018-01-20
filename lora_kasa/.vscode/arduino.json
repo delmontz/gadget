@@ -1,0 +1,4 @@
+{
+    "sketch": "lora_kasa.ino",
+    "board": "arduino:avr:uno"
+}
