@@ -1,4 +1,5 @@
 {
     "sketch": "lora_kasa.ino",
-    "board": "arduino:avr:uno"
+    "board": "arduino:avr:uno",
+    "port": "COM11"
 }
